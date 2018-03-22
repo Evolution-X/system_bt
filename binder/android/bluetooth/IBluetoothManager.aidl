@@ -58,5 +58,7 @@ interface IBluetoothManager
     boolean isHearingAidProfileSupported();
 
     List<String> getSystemConfigEnabledProfilesForPackage(String packageName);
+
+    boolean factoryReset();
 }
 
