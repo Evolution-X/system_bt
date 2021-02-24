@@ -53,9 +53,7 @@ typedef enum {
   BTAV_A2DP_CODEC_INDEX_SOURCE_AAC,
   BTAV_A2DP_CODEC_INDEX_SOURCE_APTX,
   BTAV_A2DP_CODEC_INDEX_SOURCE_APTX_HD,
-  BTAV_A2DP_CODEC_INDEX_SOURCE_APTX_ADAPTIVE,
   BTAV_A2DP_CODEC_INDEX_SOURCE_LDAC,
-  BTAV_A2DP_CODEC_INDEX_SOURCE_APTX_TWS,
 
   BTAV_A2DP_CODEC_INDEX_SOURCE_MAX,
 
@@ -107,8 +105,7 @@ typedef enum {
 typedef enum {
   BTAV_A2DP_CODEC_CHANNEL_MODE_NONE = 0x0,
   BTAV_A2DP_CODEC_CHANNEL_MODE_MONO = 0x1 << 0,
-  BTAV_A2DP_CODEC_CHANNEL_MODE_STEREO = 0x1 << 1,
-  BTAV_A2DP_CODEC_CHANNEL_MODE_DUAL_CHANNEL = 0x1 << 2
+  BTAV_A2DP_CODEC_CHANNEL_MODE_STEREO = 0x1 << 1
 } btav_a2dp_codec_channel_mode_t;
 
 /*
@@ -149,14 +146,8 @@ typedef struct {
       case BTAV_A2DP_CODEC_INDEX_SOURCE_APTX_HD:
         codec_name_str = "aptX HD";
         break;
-      case BTAV_A2DP_CODEC_INDEX_SOURCE_APTX_ADAPTIVE:
-        codec_name_str = "aptX Adaptive";
-        break;
       case BTAV_A2DP_CODEC_INDEX_SOURCE_LDAC:
         codec_name_str = "LDAC";
-        break;
-      case BTAV_A2DP_CODEC_INDEX_SOURCE_APTX_TWS:
-        codec_name_str = "aptX TWS";
         break;
       case BTAV_A2DP_CODEC_INDEX_SINK_SBC:
         codec_name_str = "SBC (Sink)";
@@ -224,9 +215,6 @@ typedef struct {
     AppendCapability(channel_mode_str,
                      (channel_mode & BTAV_A2DP_CODEC_CHANNEL_MODE_STEREO),
                      "STEREO");
-    AppendCapability(channel_mode_str,
-                     (channel_mode & BTAV_A2DP_CODEC_CHANNEL_MODE_DUAL_CHANNEL),
-                     "DUAL_CHANNEL");
 
     return "codec: " + codec_name_str +
            " priority: " + std::to_string(codec_priority) +
